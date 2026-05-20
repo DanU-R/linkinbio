@@ -2,417 +2,813 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@kavve_ra • link</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>kavve-ra-links • curated affiliate links</title>
+  <meta name="description" content="kavve-ra-links: landing link-in-bio modern untuk kumpulan link affiliate pilihan." />
+  <meta name="theme-color" content="#0f1117" />
+  <meta property="og:title" content="kavve-ra-links" />
+  <meta property="og:description" content="Curated affiliate links by @kavve_ra." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f1117'/><text x='50' y='62' text-anchor='middle' font-size='54' fill='%23b59aff'>K</text></svg>" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f1117;
+      --bg-soft: #171a24;
+      --card: #1b1f2c;
+      --card-2: #202638;
+      --line: #2a3147;
+      --line-soft: #313a56;
+      --text: #f5f7ff;
+      --muted: #a8b0c8;
+      --brand: #b59aff;
+      --brand-2: #7aa2ff;
+      --ok: #6ee7b7;
+      --danger: #fca5a5;
+      --shadow: 0 18px 45px rgba(4, 8, 20, 0.45);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --space-1: 8px;
+      --space-2: 12px;
+      --space-3: 16px;
+      --space-4: 20px;
+      --space-5: 28px;
+      --space-6: 36px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(1100px 600px at 12% -10%, rgba(181, 154, 255, 0.23), transparent 62%),
+        radial-gradient(900px 520px at 90% 0%, rgba(122, 162, 255, 0.16), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.5;
+    }
 
     body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: #161412;
-      color: #f2ede6;
-      min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 48px 20px;
-    }
-
-    .container {
-      max-width: 520px;
-      width: 100%;
-      text-align: center;
-    }
-
-    /* --- Profile --- */
-    .avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 9999px;
-      background: #2a2724;
-      border: 2px solid #2e2a26;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      margin: 0 auto 16px;
-      font-size: 36px;
-      transition: border-color 0.2s ease;
-    }
-    .avatar:hover {
-      border-color: #7c5cfc;
+      padding: 28px 16px 38px;
     }
 
-    .name {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: #f2ede6;
-      margin-bottom: 6px;
+    .shell {
+      width: min(760px, 100%);
+      display: grid;
+      gap: var(--space-4);
     }
 
-    .bio {
-      font-size: 14px;
-      color: #a89f94;
-      line-height: 1.65;
-      margin-bottom: 28px;
-    }
-    .bio .emoji-row {
-      display: block;
-      margin-top: 6px;
-      color: #6b6359;
-      font-size: 13px;
+    .panel {
+      background: linear-gradient(180deg, rgba(30, 36, 56, 0.74), rgba(20, 24, 38, 0.88));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(7px);
     }
 
-    /* --- Search --- */
-    .search-wrap {
-      position: relative;
-      margin-bottom: 24px;
-    }
-    .search-wrap input {
-      width: 100%;
-      padding: 14px 16px 14px 46px;
-      border-radius: 9999px;
-      background: #1e1c1a;
-      border: 1px solid #2e2a26;
-      color: #f2ede6;
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .search-wrap input:focus {
-      border-color: #7c5cfc;
-      box-shadow: 0 0 0 3px rgba(124, 92, 252, 0.12);
-    }
-    .search-wrap input::placeholder {
-      color: #4a443e;
-    }
-    .search-icon {
-      position: absolute;
-      left: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 15px;
-      color: #4a443e;
-      pointer-events: none;
-    }
-    .search-clear {
-      position: absolute;
-      right: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 28px;
-      height: 28px;
-      border-radius: 9999px;
-      background: #2a2724;
-      border: 1px solid #2e2a26;
-      color: #a89f94;
-      font-size: 14px;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-      padding: 0;
-      transition: all 0.15s ease;
-    }
-    .search-clear.show { display: flex; }
-    .search-clear:hover {
-      background: #34302c;
-      color: #f2ede6;
+    .hero {
+      padding: clamp(18px, 2.8vw, 26px);
+      display: grid;
+      gap: var(--space-4);
     }
 
-    .no-results {
-      display: none;
-      padding: 32px 0;
-      color: #6b6359;
-      font-size: 14px;
-    }
-    .no-results.show { display: block; }
-
-    /* --- Link items --- */
-    .links {
+    .hero-top {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .link-btn {
-      display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 14px 20px;
-      border-radius: 9999px;
-      background: #1e1c1a;
-      border: 1px solid #2e2a26;
-      color: #f2ede6;
-      text-decoration: none;
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      letter-spacing: 0.1px;
+      align-items: flex-start;
+      gap: var(--space-3);
+      flex-wrap: wrap;
     }
-    .link-btn:hover {
-      background: #2a2724;
-      border-color: #7c5cfc;
+
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-width: 0;
+    }
+
+    .avatar {
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(140deg, #8d7bff, #65b4ff);
+      box-shadow: 0 10px 25px rgba(120, 115, 255, 0.38);
+      flex: 0 0 auto;
+    }
+
+    .identity-text { min-width: 0; }
+
+    .eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #c8b8ff;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(26px, 4vw, 36px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      word-break: break-word;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 56ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      border: 1px solid var(--line-soft);
+      background: rgba(25, 30, 46, 0.8);
+      color: #dce2ff;
+      padding: 9px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .chip:hover {
+      border-color: #4f5f8b;
       transform: translateY(-1px);
     }
-    .link-btn:active {
-      transform: scale(0.98);
-    }
-    .link-btn:hover .arrow {
-      color: #7c5cfc;
+
+    .chip.live::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: #7cecc6;
+      box-shadow: 0 0 12px #7cecc6;
+      animation: pulse 1.8s infinite ease-in-out;
     }
 
-    .link-btn .label {
-      display: flex;
-      align-items: center;
+    .search-card {
+      padding: 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: rgba(18, 22, 35, 0.75);
+      display: grid;
       gap: 10px;
     }
-    .link-btn .emoji {
-      font-size: 18px;
-    }
-    .link-btn .arrow {
-      color: #4a443e;
-      font-size: 14px;
-      transition: color 0.2s ease;
-    }
 
-    /* --- Divider --- */
-    .divider {
+    .search-row {
+      position: relative;
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin: 24px 0 14px;
-      color: #4a443e;
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-    }
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: #2a2724;
+      gap: 8px;
     }
 
-    /* --- Social --- */
-    .social-wrap {
-      margin-top: 28px;
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      color: #7f8bb5;
+      pointer-events: none;
+      font-size: 15px;
     }
-    .social-label {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      color: #4a443e;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
+
+    .search-input {
+      width: 100%;
+      border-radius: 13px;
+      border: 1px solid var(--line-soft);
+      background: #0f1423;
+      color: var(--text);
+      padding: 12px 42px 12px 38px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .search-input:focus {
+      border-color: #8d7bff;
+      box-shadow: 0 0 0 3px rgba(141, 123, 255, 0.2);
+    }
+
+    .search-input::placeholder { color: #7481ad; }
+
+    .icon-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      border: 1px solid var(--line-soft);
+      background: #171f34;
+      color: #c6d2ff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: 0.18s ease;
+      flex: 0 0 auto;
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-1px);
+      border-color: #6172a6;
+      background: #1d2742;
+    }
+
+    .status {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      color: #9ba8d1;
+      font-size: 12px;
+    }
+
+    .status strong { color: #e8eeff; }
+
+    .links-panel {
+      padding: clamp(16px, 2.8vw, 24px);
+    }
+
+    .links-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
       margin-bottom: 14px;
+      flex-wrap: wrap;
     }
+
+    .links-title {
+      margin: 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(20px, 3.1vw, 27px);
+      letter-spacing: -0.01em;
+    }
+
+    .result-count {
+      font-size: 12px;
+      color: #b8c4ea;
+      border: 1px solid var(--line-soft);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: rgba(18, 23, 37, 0.75);
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .link-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: linear-gradient(160deg, rgba(28, 34, 53, 0.95), rgba(20, 25, 40, 0.98));
+      color: var(--text);
+      text-decoration: none;
+      min-height: 94px;
+      padding: 12px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 9px;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+      position: relative;
+      overflow: hidden;
+      will-change: transform;
+    }
+
+    .link-card::before {
+      content: '';
+      position: absolute;
+      inset: -40% -40% auto;
+      height: 100%;
+      background: radial-gradient(circle, rgba(181, 154, 255, 0.12), transparent 55%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+
+    .link-card:hover,
+    .link-card:focus-visible {
+      transform: translateY(-2px);
+      border-color: #6f7db2;
+      box-shadow: 0 10px 25px rgba(5, 10, 26, 0.38);
+      outline: none;
+    }
+
+    .link-card:hover::before,
+    .link-card:focus-visible::before { opacity: 1; }
+
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #d6ccff;
+      background: rgba(91, 81, 170, 0.24);
+      border: 1px solid rgba(141, 123, 255, 0.42);
+      border-radius: 999px;
+      padding: 4px 8px;
+      width: fit-content;
+    }
+
+    .badge.text { color: #cfe3ff; background: rgba(68, 103, 175, 0.22); border-color: rgba(108, 146, 220, 0.45); }
+
+    .link-name {
+      font-size: 14px;
+      line-height: 1.45;
+      color: #f3f6ff;
+      word-break: break-word;
+      margin: 0;
+    }
+
+    .link-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #8f9bc4;
+      font-size: 12px;
+    }
+
+    .arrow {
+      color: #c4d1ff;
+      font-size: 16px;
+      transition: transform .2s ease, color .2s ease;
+    }
+
+    .link-card:hover .arrow,
+    .link-card:focus-visible .arrow {
+      transform: translate(2px, -2px);
+      color: #fff;
+    }
+
+    .state {
+      display: none;
+      text-align: center;
+      border: 1px dashed var(--line-soft);
+      border-radius: var(--radius-md);
+      padding: 28px 14px;
+      color: #a8b5de;
+      background: rgba(20, 26, 43, 0.55);
+    }
+
+    .state.show { display: block; }
+
+    .skeleton {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .skeleton-item {
+      height: 94px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(90deg, #192035 25%, #253050 45%, #192035 65%);
+      background-size: 220% 100%;
+      animation: shimmer 1.4s infinite linear;
+      border: 1px solid #2b3550;
+    }
+
     .social {
       display: flex;
       justify-content: center;
-      gap: 12px;
-    }
-    .social a {
-      width: 44px;
-      height: 44px;
-      border-radius: 9999px;
-      background: #1e1c1a;
-      border: 1px solid #2e2a26;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 20px;
-      color: #a89f94;
-      transition: all 0.2s ease;
-    }
-    .social a:hover {
-      background: #2a2724;
-      border-color: #7c5cfc;
-      color: #f2ede6;
-      transform: translateY(-2px);
-    }
-
-    /* --- Footer --- */
-    .footer {
-      margin-top: 32px;
-      font-size: 12px;
-      color: #3d3833;
-      letter-spacing: 0.3px;
-    }
-    .footer a {
-      color: #6b6359;
-      text-decoration: none;
-      transition: color 0.15s ease;
-    }
-    .footer a:hover {
-      color: #7c5cfc;
-    }
-
-    /* --- Hidden --- */
-    .link-btn.hidden,
-    .divider.hidden,
-    .links-group.hidden { display: none; }
-
-    /* --- Responsive --- */
-    @media (max-width: 400px) {
-      body { padding: 32px 16px; }
-      .name { font-size: 24px; }
-      .link-btn { padding: 12px 16px; font-size: 13px; }
-    }
-
-    /* --- Shimmer loading placeholder --- */
-    .shimmer-row {
-      display: flex;
-      flex-direction: column;
       gap: 10px;
-      margin-bottom: 10px;
+      flex-wrap: wrap;
+      margin-top: 6px;
     }
-    .shimmer-bar {
-      height: 50px;
-      border-radius: 9999px;
-      background: linear-gradient(90deg, #1e1c1a 25%, #2a2724 50%, #1e1c1a 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.8s ease-in-out infinite;
+
+    .social a {
+      text-decoration: none;
+      color: #d9e3ff;
+      border: 1px solid var(--line-soft);
+      background: rgba(24, 30, 49, 0.76);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: .18s ease;
     }
+
+    .social a:hover {
+      background: #25304f;
+      border-color: #7081b7;
+      transform: translateY(-1px);
+    }
+
+    .footer {
+      text-align: center;
+      color: #8f9ac0;
+      font-size: 12px;
+      margin-top: 10px;
+      opacity: 0.95;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
     @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
+      0% { background-position: 220% 0; }
+      100% { background-position: -220% 0; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.7); opacity: .75; }
+    }
+
+    @media (max-width: 740px) {
+      .links-grid,
+      .skeleton {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 420px) {
+      body { padding: 18px 10px 26px; }
+      .hero { padding: 14px; }
+      .links-panel { padding: 14px; }
+      .avatar { width: 54px; height: 54px; border-radius: 14px; font-size: 22px; }
+      h1 { font-size: 24px; }
+      .hero-actions { gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Avatar -->
-    <div class="avatar">🛍️</div>
+  <main class="shell" aria-label="kavve-ra-links">
+    <section class="panel hero" aria-labelledby="brandTitle">
+      <div class="hero-top">
+        <div class="identity">
+          <div class="avatar" aria-hidden="true">K</div>
+          <div class="identity-text">
+            <div class="eyebrow">kavve-ra-links</div>
+            <h1 id="brandTitle">The things I actually buy — and actually worth your money.</h1>
+            <p class="subtitle">
+              Real picks only: link produk yang paling sering kepakai, udah dirapikan biar easy to find, cepat kebuka, dan tetap nyaman di mobile maupun desktop.
+            </p>
+          </div>
+        </div>
 
-    <!-- Name -->
-    <div class="name">@kavve_ra</div>
-
-    <!-- Bio -->
-    <div class="bio">
-      iseng review barang-barangeun
-      <span class="emoji-row">
-        🤞🏻 pernah gak sih... murahnya pake banget?<br>⬇️ cek di bawah
-      </span>
-    </div>
-
-    <!-- Search -->
-    <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" placeholder="Cari produk..." autocomplete="off" />
-      <button class="search-clear" id="searchClear">✕</button>
-    </div>
-
-    <div class="no-results" id="noResults">Tidak ada produk ditemukan 😕</div>
-
-    <!-- Products (dynamic) -->
-    <div class="links links-group" id="productList"></div>
-    <div class="shimmer-row" id="shimmerRow">
-      <div class="shimmer-bar"></div>
-      <div class="shimmer-bar"></div>
-      <div class="shimmer-bar"></div>
-    </div>
-
-    <!-- Social -->
-    <div class="social-wrap">
-      <div class="social-label">sosial</div>
-      <div class="social">
-        <a href="https://tools-affiliate-tau.vercel.app" title="Affiliate Tools" target="_blank" rel="noopener">✍️</a>
-        <a href="#" title="Threads" target="_blank" rel="noopener">🦋</a>
-        <a href="https://s.shopee.co.id/7pqBYQTCAj" title="Shopee" target="_blank" rel="noopener">🛒</a>
-        <a href="#" title="Instagram" target="_blank" rel="noopener">📷</a>
-        <a href="#" title="TikTok" target="_blank" rel="noopener">🎵</a>
+        <div class="hero-actions">
+          <span class="chip live" id="liveStatus">sync standby</span>
+        </div>
       </div>
-    </div>
 
-    <div class="footer">
-      <a href="https://tools-affiliate-tau.vercel.app" target="_blank" rel="noopener">tools-affiliate</a> • © 2026 @kavve_ra
-    </div>
-  </div>
+      <div class="search-card" aria-label="Pencarian link">
+        <div class="search-row">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <label class="sr-only" for="searchInput">Cari link</label>
+          <input id="searchInput" class="search-input" type="search" placeholder="Cari nama produk atau URL..." autocomplete="off" />
+          <button id="clearBtn" class="icon-btn" type="button" aria-label="Bersihkan pencarian">✕</button>
+          <button id="refreshBtn" class="icon-btn" type="button" aria-label="Muat ulang data">↻</button>
+        </div>
+        <div class="status">
+          <span id="statusText">Menyiapkan data...</span>
+          <strong id="updatedText">—</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel links-panel" aria-labelledby="linksTitle">
+      <div class="links-head">
+        <h2 class="links-title" id="linksTitle">All Links</h2>
+        <span class="result-count" id="resultCount">0 item</span>
+      </div>
+
+      <div id="skeleton" class="skeleton" aria-hidden="true">
+        <div class="skeleton-item"></div>
+        <div class="skeleton-item"></div>
+        <div class="skeleton-item"></div>
+        <div class="skeleton-item"></div>
+      </div>
+
+      <div id="emptyState" class="state" role="status" aria-live="polite"></div>
+      <div id="linksGrid" class="links-grid" role="list"></div>
+
+      <div class="social" aria-label="Aksi cepat">
+        <a href="https://www.threads.com/@kavve_ra" target="_blank" rel="noopener">🧵 Threads</a>
+      </div>
+    </section>
+
+    <div class="footer">© 2026 kavve-ra-links • fast, clean, and shoppable</div>
+  </main>
 
   <script>
-    const API_URL = 'https://tools-affiliate-tau.vercel.app/api/links';
+    const API_URL = 'https://tools-affiliate-tau.vercel.app/api/link-store';
+    const CACHE_KEY = 'kavve_ra_links_cache_v1';
+
     const input = document.getElementById('searchInput');
-    const clearBtn = document.getElementById('searchClear');
-    const noResults = document.getElementById('noResults');
-    const productList = document.getElementById('productList');
-    const shimmerRow = document.getElementById('shimmerRow');
-    let links = [];
+    const clearBtn = document.getElementById('clearBtn');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const statusText = document.getElementById('statusText');
+    const updatedText = document.getElementById('updatedText');
+    const liveStatus = document.getElementById('liveStatus');
+    const linksGrid = document.getElementById('linksGrid');
+    const skeleton = document.getElementById('skeleton');
+    const emptyState = document.getElementById('emptyState');
+    const resultCount = document.getElementById('resultCount');
 
-    const EMOJIS = ['🛒', '🔥', '💥', '⭐', '✨', '🎯', '💯', '🥇', '🏆', '💜', '🧴', '👗', '👟', '📱', '💻', '🎧', '⌚', '🕶️'];
+    const state = {
+      links: [],
+      query: '',
+      source: 'none'
+    };
 
-    async function loadLinks() {
+    function isValidUrl(value) {
+      if (typeof value !== 'string') return false;
       try {
-        const res = await fetch(API_URL);
-        if (!res.ok) throw new Error('Gagal load');
-        const data = await res.json();
-        links = data.links || [];
-        renderLinks();
-      } catch (e) {
-        productList.innerHTML = `<div style="color:#6b6359;padding:32px 0;font-size:14px;">⚠️ Gagal memuat link</div>`;
-      } finally {
-        shimmerRow.style.display = 'none';
+        const u = new URL(value.trim());
+        return u.protocol === 'http:' || u.protocol === 'https:';
+      } catch {
+        return false;
       }
     }
 
-    function renderLinks() {
-      if (!links.length) {
-        noResults.classList.add('show');
-        productList.innerHTML = '';
+    function parseSafe(value, fallback) {
+      try {
+        const parsed = JSON.parse(value);
+        return parsed ?? fallback;
+      } catch {
+        return fallback;
+      }
+    }
+
+    function formatDateLabel(value) {
+      if (!value || Number.isNaN(Date.parse(value))) return 'waktu tidak tersedia';
+      return new Intl.DateTimeFormat('id-ID', {
+        day: '2-digit',
+        month: 'short',
+        hour: '2-digit',
+        minute: '2-digit'
+      }).format(new Date(value));
+    }
+
+    function normalizeItem(raw, group = 'produk') {
+      if (!raw || typeof raw !== 'object') return null;
+
+      const name = String(raw.name || raw.label || '').trim();
+      const url = String(raw.link || raw.url || '').trim();
+      if (!name || !isValidUrl(url)) return null;
+
+      const addedAt = typeof raw.addedAt === 'string' && !Number.isNaN(Date.parse(raw.addedAt))
+        ? raw.addedAt
+        : new Date(0).toISOString();
+
+      return { name, url, addedAt, group };
+    }
+
+    function dedupeAndSort(items) {
+      const map = new Map();
+      for (const item of items) {
+        if (!item) continue;
+        const key = `${item.name.toLowerCase()}|${item.url.toLowerCase()}`;
+        if (!map.has(key)) map.set(key, item);
+      }
+      return Array.from(map.values())
+        .sort((a, b) => Date.parse(b.addedAt || '') - Date.parse(a.addedAt || ''));
+    }
+
+    function buildLinksFromPayload(payload) {
+      const fromBio = Array.isArray(payload?.linkBio)
+        ? payload.linkBio.map(item => normalizeItem(item, 'bio'))
+        : [];
+      const fromText = Array.isArray(payload?.textLinks)
+        ? payload.textLinks.map(item => normalizeItem(item, 'text'))
+        : [];
+
+      const fromLegacy = Array.isArray(payload?.links)
+        ? payload.links.map(item => normalizeItem(item, 'legacy'))
+        : [];
+
+      return dedupeAndSort([...fromBio, ...fromText, ...fromLegacy]);
+    }
+
+    function setLive(mode) {
+      if (mode === 'cloud') {
+        liveStatus.textContent = 'sync cloud aktif';
+        liveStatus.classList.add('live');
         return;
       }
-      noResults.classList.remove('show');
+      if (mode === 'cache') {
+        liveStatus.textContent = 'pakai cache lokal';
+        liveStatus.classList.remove('live');
+        return;
+      }
+      liveStatus.textContent = 'offline / fallback';
+      liveStatus.classList.remove('live');
+    }
 
-      const q = input.value.toLowerCase().trim();
-      const filtered = links.filter(l => {
-        const text = (l.name + ' ' + l.url).toLowerCase();
-        return !q || text.includes(q);
+    function setLoading(on) {
+      skeleton.style.display = on ? 'grid' : 'none';
+    }
+
+    function setEmpty(message) {
+      if (message) {
+        emptyState.textContent = message;
+        emptyState.classList.add('show');
+      } else {
+        emptyState.textContent = '';
+        emptyState.classList.remove('show');
+      }
+    }
+
+    function groupBadge(group) {
+      if (group === 'text') return '<span class="badge text">text link</span>';
+      if (group === 'legacy') return '<span class="badge">legacy</span>';
+      return '<span class="badge">link bio</span>';
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replaceAll('&', '&')
+        .replaceAll('<', '<')
+        .replaceAll('>', '>')
+        .replaceAll('"', '"')
+        .replaceAll("'", '&#039;');
+    }
+
+    function render() {
+      const q = state.query.toLowerCase().trim();
+      const filtered = state.links.filter(item => {
+        const hay = `${item.name} ${item.url}`.toLowerCase();
+        return !q || hay.includes(q);
       });
 
-      if (!filtered.length) {
-        noResults.classList.add('show');
-        productList.innerHTML = '';
+      resultCount.textContent = `${filtered.length} item`;
+
+      if (!state.links.length) {
+        linksGrid.innerHTML = '';
+        setEmpty('Belum ada link tersedia. Tambah data dari tools-affiliate dulu.');
         return;
       }
-      noResults.classList.remove('show');
 
-      productList.innerHTML = filtered.map((l, i) =>
-        `<a href="${l.url}" class="link-btn" target="_blank" rel="noopener">
-          <span class="label">
-            <span class="emoji">${EMOJIS[i % EMOJIS.length]}</span>
-            ${l.name}
-          </span>
-          <span class="arrow">↗</span>
-        </a>`
-      ).join('');
+      if (!filtered.length) {
+        linksGrid.innerHTML = '';
+        setEmpty('Tidak ada hasil yang cocok dengan pencarianmu.');
+        return;
+      }
+
+      setEmpty('');
+
+      linksGrid.innerHTML = filtered.map(item => `
+        <a class="link-card" href="${escapeHtml(item.url)}" target="_blank" rel="noopener" role="listitem" aria-label="Buka ${escapeHtml(item.name)}">
+          ${groupBadge(item.group)}
+          <p class="link-name">${escapeHtml(item.name)}</p>
+          <div class="link-foot">
+            <span>${formatDateLabel(item.addedAt)}</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </div>
+        </a>
+      `).join('');
     }
 
-    function search() {
-      const q = input.value.toLowerCase().trim();
-      clearBtn.classList.toggle('show', q.length > 0);
-      renderLinks();
+    function loadCache() {
+      const cache = parseSafe(localStorage.getItem(CACHE_KEY), null);
+      if (!cache || typeof cache !== 'object') return null;
+      return cache;
     }
 
-    input.addEventListener('input', search);
+    function saveCache(payload) {
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({
+          savedAt: new Date().toISOString(),
+          payload
+        }));
+      } catch {}
+    }
+
+    async function fetchWithTimeout(url, options = {}, timeoutMs = 10000) {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+      try {
+        return await fetch(url, { ...options, signal: ctrl.signal });
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    async function syncLinks({ silent = false } = {}) {
+      if (!silent) setLoading(true);
+      statusText.textContent = 'Mengambil data terbaru...';
+
+      try {
+        const res = await fetchWithTimeout(API_URL, { cache: 'no-store' }, 10000);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const payload = await res.json();
+        const links = buildLinksFromPayload(payload);
+
+        state.links = links;
+        state.source = 'cloud';
+        render();
+        saveCache(payload);
+
+        statusText.textContent = links.length
+          ? 'Data tersinkron dari cloud'
+          : 'Data cloud kosong';
+
+        const cloudTs = payload?.updatedAt || new Date().toISOString();
+        updatedText.textContent = `update ${formatDateLabel(cloudTs)}`;
+        setLive('cloud');
+      } catch (err) {
+        const cache = loadCache();
+        if (cache?.payload) {
+          state.links = buildLinksFromPayload(cache.payload);
+          state.source = 'cache';
+          render();
+          statusText.textContent = 'Cloud gagal, tampilkan cache lokal';
+          updatedText.textContent = `cache ${formatDateLabel(cache.savedAt)}`;
+          setLive('cache');
+        } else {
+          state.links = [];
+          render();
+          statusText.textContent = 'Gagal memuat data';
+          updatedText.textContent = 'cek koneksi / endpoint';
+          setLive('offline');
+          if (!silent) setEmpty('⚠️ Gagal memuat link dari server dan cache kosong.');
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    function onSearchInput() {
+      state.query = input.value;
+      render();
+    }
+
+    function initFromCacheFirst() {
+      const cache = loadCache();
+      if (!cache?.payload) return;
+
+      state.links = buildLinksFromPayload(cache.payload);
+      state.source = 'cache';
+      render();
+      statusText.textContent = 'Menampilkan cache sementara...';
+      updatedText.textContent = `cache ${formatDateLabel(cache.savedAt)}`;
+      setLive('cache');
+    }
+
+    input.addEventListener('input', onSearchInput);
+
     clearBtn.addEventListener('click', () => {
       input.value = '';
-      search();
+      state.query = '';
+      render();
       input.focus();
     });
 
-    loadLinks();
+    refreshBtn.addEventListener('click', () => {
+      syncLinks();
+    });
+
+    window.addEventListener('online', () => {
+      syncLinks({ silent: true });
+    });
+
+    initFromCacheFirst();
+    syncLinks();
   </script>
 </body>
 </html>
