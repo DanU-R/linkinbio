@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@kavve_ra • link</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #161412;
+      color: #f2ede6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 20px;
+    }
+
+    .container {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* --- Profile --- */
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 9999px;
+      background: #2a2724;
+      border: 2px solid #2e2a26;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 36px;
+      transition: border-color 0.2s ease;
+    }
+    .avatar:hover {
+      border-color: #7c5cfc;
+    }
+
+    .name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #f2ede6;
+      margin-bottom: 6px;
+    }
+
+    .bio {
+      font-size: 14px;
+      color: #a89f94;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .bio .emoji-row {
+      display: block;
+      margin-top: 6px;
+      color: #6b6359;
+      font-size: 13px;
+    }
+
+    /* --- Search --- */
+    .search-wrap {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .search-wrap input {
+      width: 100%;
+      padding: 14px 16px 14px 46px;
+      border-radius: 9999px;
+      background: #1e1c1a;
+      border: 1px solid #2e2a26;
+      color: #f2ede6;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .search-wrap input:focus {
+      border-color: #7c5cfc;
+      box-shadow: 0 0 0 3px rgba(124, 92, 252, 0.12);
+    }
+    .search-wrap input::placeholder {
+      color: #4a443e;
+    }
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 15px;
+      color: #4a443e;
+      pointer-events: none;
+    }
+    .search-clear {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      border-radius: 9999px;
+      background: #2a2724;
+      border: 1px solid #2e2a26;
+      color: #a89f94;
+      font-size: 14px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      padding: 0;
+      transition: all 0.15s ease;
+    }
+    .search-clear.show { display: flex; }
+    .search-clear:hover {
+      background: #34302c;
+      color: #f2ede6;
+    }
+
+    .no-results {
+      display: none;
+      padding: 32px 0;
+      color: #6b6359;
+      font-size: 14px;
+    }
+    .no-results.show { display: block; }
+
+    /* --- Link items --- */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-radius: 9999px;
+      background: #1e1c1a;
+      border: 1px solid #2e2a26;
+      color: #f2ede6;
+      text-decoration: none;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      letter-spacing: 0.1px;
+    }
+    .link-btn:hover {
+      background: #2a2724;
+      border-color: #7c5cfc;
+      transform: translateY(-1px);
+    }
+    .link-btn:active {
+      transform: scale(0.98);
+    }
+    .link-btn:hover .arrow {
+      color: #7c5cfc;
+    }
+
+    .link-btn .label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .link-btn .emoji {
+      font-size: 18px;
+    }
+    .link-btn .arrow {
+      color: #4a443e;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    /* --- Divider --- */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0 14px;
+      color: #4a443e;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #2a2724;
+    }
+
+    /* --- Social --- */
+    .social-wrap {
+      margin-top: 28px;
+    }
+    .social-label {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: #4a443e;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 14px;
+    }
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+    .social a {
+      width: 44px;
+      height: 44px;
+      border-radius: 9999px;
+      background: #1e1c1a;
+      border: 1px solid #2e2a26;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 20px;
+      color: #a89f94;
+      transition: all 0.2s ease;
+    }
+    .social a:hover {
+      background: #2a2724;
+      border-color: #7c5cfc;
+      color: #f2ede6;
+      transform: translateY(-2px);
+    }
+
+    /* --- Footer --- */
+    .footer {
+      margin-top: 32px;
+      font-size: 12px;
+      color: #3d3833;
+      letter-spacing: 0.3px;
+    }
+    .footer a {
+      color: #6b6359;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .footer a:hover {
+      color: #7c5cfc;
+    }
+
+    /* --- Hidden --- */
+    .link-btn.hidden,
+    .divider.hidden,
+    .links-group.hidden { display: none; }
+
+    /* --- Responsive --- */
+    @media (max-width: 400px) {
+      body { padding: 32px 16px; }
+      .name { font-size: 24px; }
+      .link-btn { padding: 12px 16px; font-size: 13px; }
+    }
+
+    /* --- Shimmer loading placeholder --- */
+    .shimmer-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .shimmer-bar {
+      height: 50px;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #1e1c1a 25%, #2a2724 50%, #1e1c1a 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.8s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Avatar -->
+    <div class="avatar">🛍️</div>
+
+    <!-- Name -->
+    <div class="name">@kavve_ra</div>
+
+    <!-- Bio -->
+    <div class="bio">
+      iseng review barang-barangeun
+      <span class="emoji-row">
+        🤞🏻 pernah gak sih... murahnya pake banget?<br>⬇️ cek di bawah
+      </span>
+    </div>
+
+    <!-- Search -->
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Cari produk..." autocomplete="off" />
+      <button class="search-clear" id="searchClear">✕</button>
+    </div>
+
+    <div class="no-results" id="noResults">Tidak ada produk ditemukan 😕</div>
+
+    <!-- Products (dynamic) -->
+    <div class="links links-group" id="productList"></div>
+    <div class="shimmer-row" id="shimmerRow">
+      <div class="shimmer-bar"></div>
+      <div class="shimmer-bar"></div>
+      <div class="shimmer-bar"></div>
+    </div>
+
+    <!-- Social -->
+    <div class="social-wrap">
+      <div class="social-label">sosial</div>
+      <div class="social">
+        <a href="https://tools-affiliate-tau.vercel.app" title="Affiliate Tools" target="_blank" rel="noopener">✍️</a>
+        <a href="#" title="Threads" target="_blank" rel="noopener">🦋</a>
+        <a href="https://s.shopee.co.id/7pqBYQTCAj" title="Shopee" target="_blank" rel="noopener">🛒</a>
+        <a href="#" title="Instagram" target="_blank" rel="noopener">📷</a>
+        <a href="#" title="TikTok" target="_blank" rel="noopener">🎵</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a href="https://tools-affiliate-tau.vercel.app" target="_blank" rel="noopener">tools-affiliate</a> • © 2026 @kavve_ra
+    </div>
+  </div>
+
+  <script>
+    const API_URL = 'https://tools-affiliate-tau.vercel.app/api/links';
+    const input = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('searchClear');
+    const noResults = document.getElementById('noResults');
+    const productList = document.getElementById('productList');
+    const shimmerRow = document.getElementById('shimmerRow');
+    let links = [];
+
+    const EMOJIS = ['🛒', '🔥', '💥', '⭐', '✨', '🎯', '💯', '🥇', '🏆', '💜', '🧴', '👗', '👟', '📱', '💻', '🎧', '⌚', '🕶️'];
+
+    async function loadLinks() {
+      try {
+        const res = await fetch(API_URL);
+        if (!res.ok) throw new Error('Gagal load');
+        const data = await res.json();
+        links = data.links || [];
+        renderLinks();
+      } catch (e) {
+        productList.innerHTML = `<div style="color:#6b6359;padding:32px 0;font-size:14px;">⚠️ Gagal memuat link</div>`;
+      } finally {
+        shimmerRow.style.display = 'none';
+      }
+    }
+
+    function renderLinks() {
+      if (!links.length) {
+        noResults.classList.add('show');
+        productList.innerHTML = '';
+        return;
+      }
+      noResults.classList.remove('show');
+
+      const q = input.value.toLowerCase().trim();
+      const filtered = links.filter(l => {
+        const text = (l.name + ' ' + l.url).toLowerCase();
+        return !q || text.includes(q);
+      });
+
+      if (!filtered.length) {
+        noResults.classList.add('show');
+        productList.innerHTML = '';
+        return;
+      }
+      noResults.classList.remove('show');
+
+      productList.innerHTML = filtered.map((l, i) =>
+        `<a href="${l.url}" class="link-btn" target="_blank" rel="noopener">
+          <span class="label">
+            <span class="emoji">${EMOJIS[i % EMOJIS.length]}</span>
+            ${l.name}
+          </span>
+          <span class="arrow">↗</span>
+        </a>`
+      ).join('');
+    }
+
+    function search() {
+      const q = input.value.toLowerCase().trim();
+      clearBtn.classList.toggle('show', q.length > 0);
+      renderLinks();
+    }
+
+    input.addEventListener('input', search);
+    clearBtn.addEventListener('click', () => {
+      input.value = '';
+      search();
+      input.focus();
+    });
+
+    loadLinks();
+  </script>
+</body>
+</html>
